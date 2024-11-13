@@ -1,6 +1,6 @@
 # SmplGen
 
-SmplGen produces strings from patterns. It combines the Jinja templating engine with Python's random module and built-in functions. With this, SmplGen can generate test data for diverse applications, such as sample files for machine learning, performance testing, or database dummy data.
+SmplGen ('sample generator') produces strings from patterns. It combines the Jinja templating engine with Python's random module and built-in functions. With this, SmplGen can generate test data for various applications, such as machine learning, performance testing, or database population.
 
 Examples:
   python smplgen.py "Dice: {{iuniform(1,6)}}" -n 2
