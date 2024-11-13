@@ -1,0 +1,1 @@
+{{intervalp(1000, 5000, 10.0)}} {{set(uniform(3,7),ilognormvariate,(0,1.5))}}

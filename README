@@ -1,0 +1,47 @@
+# SmplGen
+
+SmplGen produces strings from patterns. It combines the Jinja templating engine with Python's random module and built-in functions. With this, SmplGen can generate test data for diverse applications, such as sample files for machine learning, performance testing, or database dummy data.
+
+Examples:
+  python smplgen.py "Dice: {{iuniform(1,6)}}" -n 2
+  python smplgen.py "Coin: {{choice(['head', 'tail'])}}"
+  python smplgen.py "{{first_name()}} earns {{500 + round(gauss(3000, 1000), 2)}} Euros per month"
+See also the examples directory for more complex patterns, including multi-line templates and various distribution functions.
+
+Base syntax:
+  python smplgen.py <pattern>
+  python smplgen.py -i <pattern-file>
+
+Options:
+  -o <output-file>   Output file to which the generated string is written (default: stdout)
+  -n <count>         Generate <count> outputs, corresponds to '{{% for i in range({<count>}) %}}<pattern>\n{{% endfor %}}'
+
+Control flow:
+  Construct loop like this:
+  {% for x in items %}{{ x }}{% endfor %}.
+  Use if-statements for conditions like this:
+  {% if x > 18 %}Adult{% elif x > 12 %}Teen{% else %}Child{% endif %}.
+  Set variables like this:
+  {% set total = price * quantity %}
+
+Random distributions:
+  Uniform: random(), uniform(a, b)
+  Integer: randint(a, b), randrange(start, stop, step)
+  Normal (Gaussian): normalvariate(mu, sigma)
+  Lognormal: lognormvariate(mu, sigma)
+  Exponential: expovariate(lambd)
+  Gamma: gammavariate(alpha, beta)
+  Beta: betavariate(alpha, beta)
+  Triangular: triangular(low, high, mode)
+  Von Mises: vonmisesvariate(mu, kappa)
+  Pareto: paretovariate(alpha)
+  Weibull: weibullvariate(alpha, beta)
+  Prefix i (e.g., iuniform) will return integers instead of decimals.
+
+
+# Disclaimer and Author
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License (GPL) version 3 as published by the Free Software Foundation.
+This program is distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. 
+
+Copyright (C) 2024 Christian Rauch.
